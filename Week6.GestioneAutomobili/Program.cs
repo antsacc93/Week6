@@ -4,8 +4,6 @@ namespace Week6.GestioneAutomobili
 {
     class Program
     {
-
-
         static void Main(string[] args)
         {
             using (var ctx = new CarsManagementContext())

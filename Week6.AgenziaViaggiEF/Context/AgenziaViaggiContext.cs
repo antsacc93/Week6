@@ -20,20 +20,27 @@ namespace Week6.AgenziaViaggiEF.Context
 
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Persist Security Info = False; Integrated Security = true; 
+                                    Initial Catalog = AgenziaViaggi2; Server = .\SQLEXPRESS");
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Partecipante
-            modelBuilder.Entity<Partecipante>().ToTable("Partecipante");
-            modelBuilder.Entity<Partecipante>().HasKey(k => k.ID);
-            modelBuilder.Entity<Partecipante>().Property("Nome").IsRequired();
-            modelBuilder.Entity<Partecipante>().Property(c => c.Cognome).IsRequired();
-            modelBuilder.Entity<Partecipante>().Property(i => i.Indirizzo)
-                                                .HasMaxLength(50)
-                                                .IsRequired();
-            modelBuilder.Entity<Partecipante>().Property(c => c.Citta).IsRequired();
-            modelBuilder.Entity<Partecipante>().Property(d => d.DataNascita)
-                                               .HasColumnType("datetime2")
-                                               .IsRequired();
+            //modelBuilder.Entity<Partecipante>().ToTable("Partecipante");
+            //modelBuilder.Entity<Partecipante>().HasKey(k => k.ID);
+            //modelBuilder.Entity<Partecipante>().Property("Nome").IsRequired();
+            //modelBuilder.Entity<Partecipante>().Property(c => c.Cognome).IsRequired();
+            //modelBuilder.Entity<Partecipante>().Property(i => i.Indirizzo)
+            //                                    .HasMaxLength(50)
+            //                                    .IsRequired();
+            //modelBuilder.Entity<Partecipante>().Property(c => c.Citta).IsRequired();
+            //modelBuilder.Entity<Partecipante>().Property(d => d.DataNascita)
+            //                                   .HasColumnType("datetime2")
+            //                                   .IsRequired();
+            modelBuilder.ApplyConfiguration<Partecipante>(new PartecipanteConfiguration());
 
 
             //Responsabile
@@ -68,12 +75,63 @@ namespace Week6.AgenziaViaggiEF.Context
                                        .HasForeignKey(i => i.ItinerarioID);
             modelBuilder.Entity<Gita>().HasMany(p => p.Partecipanti)
                                        .WithMany(g => g.Gite);
-                                       //.Map(gp => { 
-                                       //     gp.MapLeftKey("GitaRefID"),
-                                       //     gp.MapRighyKey("PartecipanteRefID"),
-                                       //     gp.ToTable("GitaPartecipante")
-                                       //});
 
+
+            //modelBuilder.Entity<GitaPartecipante>().HasKey(sc => new { sc.StudentId, sc.CourseId });
+            //modelBuilder.Entity<GitaPartecipante>()
+            //.HasOne<Gita>(g => g.Partecipanti)
+            //.WithMany(p => p.Partecipanti)
+            //.HasForeignKey(sc => sc.CId);
+
+            //Pre-caricamento dei dati
+            //modelBuilder.Entity<Partecipante>().HasData(
+            //    new Partecipante
+            //    {
+            //        ID = 1,
+            //        Nome = "Mario",
+            //        Cognome = "Rossi",
+            //        DataNascita = new DateTime(1980, 1, 1),
+            //        Citta = "Milano",
+            //        Indirizzo = "Via dei faggi, 78"
+            //    },
+            //    new Partecipante
+            //    {
+            //        ID = 2,
+            //        Nome = "Luca",
+            //        Cognome = "Verdi",
+            //        DataNascita = new DateTime(1990, 2, 2),
+            //        Citta = "Bologna",
+            //        Indirizzo = "Via dei ciliegi, 50"
+            //    }
+            //);
+            modelBuilder.Entity<Itinerario>().HasData(
+                new Itinerario
+                {
+                    ID = 1,
+                    Descrizione = "Viaggio a Londra",
+                    Durata = 15,
+                    Prezzo = 500.80f
+                }
+            );
+            modelBuilder.Entity<Responsabile>().HasData(
+                new Responsabile
+                {
+                    ID = 1,
+                    Nome = "Roberta",
+                    Cognome = "Bianchi",
+                    Telefono = "3334445556"
+                }
+            );
+
+            modelBuilder.Entity<Gita>().HasData(
+                new Gita
+                {
+                    ID = 1,
+                    DataPartenza = new DateTime(2021, 06, 22),
+                    ItinerarioID = 1,
+                    ResponsabileID = 1
+                }
+            );
 
 
         } 
