@@ -12,6 +12,7 @@ namespace Week6.BlogsDataAnnotation
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Persona> People { get; set; }
 
         public BlogsAnnotationContext() : base()
         {

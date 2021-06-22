@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6.PrimoProgettoEF", "Week6.PrimoProgettoEF\Week6.PrimoProgettoEF.csproj", "{427699B7-7259-4C69-8F4F-8DE07DBAFDD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.PrimoProgettoEF", "Week6.PrimoProgettoEF\Week6.PrimoProgettoEF.csproj", "{427699B7-7259-4C69-8F4F-8DE07DBAFDD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6.BlogsDataAnnotation", "Week6.BlogsDataAnnotation\Week6.BlogsDataAnnotation.csproj", "{F45D40DD-8BDB-4833-8B1C-E7B2E0CBFCEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.BlogsDataAnnotation", "Week6.BlogsDataAnnotation\Week6.BlogsDataAnnotation.csproj", "{F45D40DD-8BDB-4833-8B1C-E7B2E0CBFCEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.GestioneAutomobili", "Week6.GestioneAutomobili\Week6.GestioneAutomobili.csproj", "{F72DC747-08B5-4F85-8EF5-3DA16E181D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6.AgenziaViaggiEF", "Week6.AgenziaViaggiEF\Week6.AgenziaViaggiEF.csproj", "{5CB8D642-BB21-4625-8AC5-4D7441A764AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{F45D40DD-8BDB-4833-8B1C-E7B2E0CBFCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F45D40DD-8BDB-4833-8B1C-E7B2E0CBFCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F45D40DD-8BDB-4833-8B1C-E7B2E0CBFCEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F72DC747-08B5-4F85-8EF5-3DA16E181D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72DC747-08B5-4F85-8EF5-3DA16E181D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72DC747-08B5-4F85-8EF5-3DA16E181D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72DC747-08B5-4F85-8EF5-3DA16E181D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB8D642-BB21-4625-8AC5-4D7441A764AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB8D642-BB21-4625-8AC5-4D7441A764AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB8D642-BB21-4625-8AC5-4D7441A764AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB8D642-BB21-4625-8AC5-4D7441A764AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
