@@ -12,22 +12,27 @@ namespace Week6.AgenziaViaggiEF.Repository
 {
     public class RepositoryPartecipanteEF : IRepositoryPartecipante
     {
-        public bool AdesioneGita(Gita gita, Partecipante partecipante)
+        public bool AdesioneGita(int idGita, int idPartecipante)
         {
             using (var ctx = new AgenziaViaggiContext())
             {
                 try
                 {
-                    if (gita == null || partecipante == null)
+                    if (idGita < 0 || idPartecipante < 0)
                     {
                         return false;
                     }
 
                     //DA RIVEDERE
-                    partecipante.Gite.Add(gita);
-                    gita.Partecipanti.Add(partecipante);
-                    ctx.Partecipanti.Attach(partecipante);
-                    ctx.Gite.Attach(gita);
+                    var partecipanteDB = ctx.Partecipanti.Find(idPartecipante);
+                    var gitaDB = ctx.Gite.Find(idGita);
+                    partecipanteDB.Gite.Add(gitaDB);
+
+                    ctx.SaveChanges();
+                    return true;
+
+                    //ctx.Partecipanti.Attach(partecipante);
+                    //ctx.Gite.Attach(gita);
                     ctx.SaveChanges();
                 }catch(SqlException ex)
                 {

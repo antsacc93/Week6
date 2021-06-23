@@ -34,9 +34,9 @@ namespace Week6.AgenziaViaggiEF
             //gita.Itinerario = itinerario;
             //repoGita.Create(gita);
 
-            var gita = repoGita.GetById(1);
-            var partecipante = repoPartecipante.GetById(1);
-            repoPartecipante.AdesioneGita(gita, partecipante);
+            //var gita = repoGita.GetById(1);
+            //var partecipante = repoPartecipante.GetById(2);
+            repoPartecipante.AdesioneGita(3, 2);
         }
     }
 }

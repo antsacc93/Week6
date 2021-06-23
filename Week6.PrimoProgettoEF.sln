@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.BlogsDataAnnotation",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.GestioneAutomobili", "Week6.GestioneAutomobili\Week6.GestioneAutomobili.csproj", "{F72DC747-08B5-4F85-8EF5-3DA16E181D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6.AgenziaViaggiEF", "Week6.AgenziaViaggiEF\Week6.AgenziaViaggiEF.csproj", "{5CB8D642-BB21-4625-8AC5-4D7441A764AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.AgenziaViaggiEF", "Week6.AgenziaViaggiEF\Week6.AgenziaViaggiEF.csproj", "{5CB8D642-BB21-4625-8AC5-4D7441A764AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6.SupermercatoEF", "Week6.SupermercatoEF\Week6.SupermercatoEF.csproj", "{6A2C74E7-8255-4C7D-8513-2C28DC25728D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5CB8D642-BB21-4625-8AC5-4D7441A764AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CB8D642-BB21-4625-8AC5-4D7441A764AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CB8D642-BB21-4625-8AC5-4D7441A764AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2C74E7-8255-4C7D-8513-2C28DC25728D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2C74E7-8255-4C7D-8513-2C28DC25728D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2C74E7-8255-4C7D-8513-2C28DC25728D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2C74E7-8255-4C7D-8513-2C28DC25728D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

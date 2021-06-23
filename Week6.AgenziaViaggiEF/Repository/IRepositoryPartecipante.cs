@@ -9,6 +9,6 @@ namespace Week6.AgenziaViaggiEF.Repository
 {
     public interface IRepositoryPartecipante : IRepository<Partecipante>
     {
-        public bool AdesioneGita(Gita gita, Partecipante partecipante);
+        public bool AdesioneGita(int idGita, int idPartecipante);
     }
 }
