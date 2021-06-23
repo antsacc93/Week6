@@ -12,6 +12,37 @@ namespace Week6.AgenziaViaggiEF.Repository
 {
     public class RepositoryPartecipanteEF : IRepositoryPartecipante
     {
+        public bool AdesioneGita(Gita gita, Partecipante partecipante)
+        {
+            using (var ctx = new AgenziaViaggiContext())
+            {
+                try
+                {
+                    if (gita == null || partecipante == null)
+                    {
+                        return false;
+                    }
+
+                    //DA RIVEDERE
+                    partecipante.Gite.Add(gita);
+                    gita.Partecipanti.Add(partecipante);
+                    ctx.Partecipanti.Attach(partecipante);
+                    ctx.Gite.Attach(gita);
+                    ctx.SaveChanges();
+                }catch(SqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }catch(Exception ec)
+                {
+                    Console.WriteLine(ec.Message);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public bool Create(Partecipante item)
         {
             //bool esito = false;
@@ -83,6 +114,21 @@ namespace Week6.AgenziaViaggiEF.Repository
             return true;
         }
 
+        public Partecipante GetById(int id)
+        {
+            using (var ctx = new AgenziaViaggiContext())
+            {
+                if(id < 0)
+                {
+                    return null;
+                }
+                var partecipante = ctx.Partecipanti
+                                .Include(x => x.Gite)
+                                .FirstOrDefault(i => i.ID == id);
+                return partecipante;
+            }
+        }
+
         public bool Update(int id, Partecipante modifiedItem)
         {
             Partecipante partToUpdate;
@@ -110,6 +156,11 @@ namespace Week6.AgenziaViaggiEF.Repository
                     partToUpdate.Indirizzo = modifiedItem.Indirizzo;
 
                     ctx.Entry<Partecipante>(partToUpdate).State = EntityState.Modified;
+
+                    //Stampa per la verifica dei record modificati
+                    ctx.ChangeTracker.DetectChanges();
+                    Console.WriteLine(ctx.ChangeTracker.DebugView.LongView);
+
                     ctx.SaveChanges();
                 }
             }

@@ -22,6 +22,7 @@ namespace Week6.AgenziaViaggiEF.Context
             builder.Property(c => c.Citta).IsRequired();
             builder.Property(d => d.DataNascita).HasColumnType("datetime2")
                                                 .IsRequired();
+            builder.Property(e => e.Email).HasMaxLength(50);
 
             builder.HasData(
                new Partecipante

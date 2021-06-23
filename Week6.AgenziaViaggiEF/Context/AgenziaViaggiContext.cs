@@ -23,7 +23,7 @@ namespace Week6.AgenziaViaggiEF.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Persist Security Info = False; Integrated Security = true; 
-                                    Initial Catalog = AgenziaViaggi2; Server = .\SQLEXPRESS");
+                                    Initial Catalog = AgenziaViaggi3; Server = .\SQLEXPRESS");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
