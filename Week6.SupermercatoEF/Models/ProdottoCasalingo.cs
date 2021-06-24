@@ -9,5 +9,10 @@ namespace Week6.SupermercatoEF.Models
     public class ProdottoCasalingo : Prodotto
     {
         public String Marchio { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString() + $" Marchio: {Marchio}";
+        }
     }
 }

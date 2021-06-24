@@ -16,5 +16,10 @@ namespace Week6.SupermercatoEF.Models
         public Reparto Reparto { get; set; }
 
         public ICollection<Vendita> Vendite { get; set; } = new List<Vendita>();
+
+        public override string ToString()
+        {
+            return $"{Codice} - {Descrizione} - {Prezzo} euro";
+        }
     }
 }

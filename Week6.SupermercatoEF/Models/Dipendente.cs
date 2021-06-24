@@ -15,5 +15,10 @@ namespace Week6.SupermercatoEF.Models
 
         public int? RepartoNumero { get; set; }
         public Reparto Reparto { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Codice} - {Nome} {Cognome} - {DataNascita.ToShortDateString()}";
+        }
     }
 }

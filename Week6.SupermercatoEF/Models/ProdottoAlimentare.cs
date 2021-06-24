@@ -10,5 +10,9 @@ namespace Week6.SupermercatoEF.Models
     {
         public DateTime DataScadenza { get; set; }
 
+        public override string ToString()
+        {
+            return base.ToString() + $" Scadenza: {DataScadenza.ToShortDateString()}"; 
+        }
     }
 }

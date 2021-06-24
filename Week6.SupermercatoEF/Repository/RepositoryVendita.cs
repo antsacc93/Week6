@@ -31,7 +31,7 @@ namespace Week6.SupermercatoEF.Repository
         {
             using (var ctx = new SupermercatoContext())
             {
-                return ctx.Vendite.ToList();
+                return ctx.Vendite.Include(x => x.Prodotto).ToList();
             }
         }
 

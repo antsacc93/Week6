@@ -14,5 +14,10 @@ namespace Week6.SupermercatoEF.Models
 
         public String CodiceProdotto { get; set; }
         public Prodotto Prodotto { get; set; }
+
+        public override string ToString()
+        {
+            return $"{NumeroVendita} - {Prodotto} - {Quantita} - {DataVendita.ToShortDateString()}";
+        }
     }
 }

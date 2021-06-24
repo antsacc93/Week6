@@ -23,8 +23,9 @@ namespace Week6.SupermercatoEF
             Console.WriteLine("2. Aggiungi dipendenti");
             Console.WriteLine("3. Aggiungi prodotti");
             Console.WriteLine("4. Visualizza dati");
-            Console.WriteLine("0. Per uscire");
-            int scelta = VerificaInput(4);
+            Console.WriteLine("5. Per uscire");
+            int scelta = VerificaInput(5);
+            Console.Clear();
             return GestireScelta(scelta);
         }
 
@@ -56,6 +57,7 @@ namespace Week6.SupermercatoEF
         private static void Stampa()
         {
             Console.WriteLine("Quale entità vuoi stampare?");
+            Console.WriteLine("1. Reparti - 2. Dipendenti - 3. Prodotti");
             int scelta = VerificaInput(3);
             if(scelta == 1)
             {
@@ -80,14 +82,12 @@ namespace Week6.SupermercatoEF
             string codice = Console.ReadLine();
             Console.WriteLine("Inserisci descrizione");
             string descrizione = Console.ReadLine();
-            Console.WriteLine("Inserisci il prezzo");
-            bool verifica = Decimal.TryParse(Console.ReadLine(), out decimal prezzo);
-            //VERIFICA: verifica true e prezzo > 0
+            Console.WriteLine("Inserisci il prezzo");    
+            var prezzo = VerificaInput();
             if(tipoProdotto == 2)
             {
                 Console.WriteLine("Inserisci data scadenza");
-                bool verificaData = DateTime.TryParse(Console.ReadLine(), out DateTime scadenza);
-                //VERIFICA
+                DateTime scadenza = VerificaData();
                 prodottoDaAggiungere = new ProdottoAlimentare()
                 {
                     Codice = codice,
@@ -115,19 +115,40 @@ namespace Week6.SupermercatoEF
                     Prezzo = prezzo
                 };
             }
-            var reparti = repoReparto.GetAll();
-            if(reparti.Count == 0)
+            var numeroReparto = ScegliNumeroReparto();
+            if(numeroReparto > 0)
             {
-                Console.WriteLine("Non ci sono reparti");
-                return;
-            } else
-            {
-                StampaReparti(reparti);
-                var numMax = reparti.Max(r => r.NumeroReparto);
-                int numeroReparto = VerificaInput(numMax);
                 repoReparto.AggiungiProdotto(numeroReparto, prodottoDaAggiungere);
             }
+            
+        }
 
+        private static decimal VerificaInput()
+        {
+            bool verifica = Decimal.TryParse(Console.ReadLine(), out decimal prezzo);
+            while(!verifica || prezzo < 0)
+            {
+                verifica = Decimal.TryParse(Console.ReadLine(), out prezzo);
+            }
+            return prezzo;
+        }
+
+        private static int ScegliNumeroReparto()
+        {
+            var reparti = repoReparto.GetAll();
+            int numeroReparto;
+            if (reparti.Count == 0)
+            {
+                Console.WriteLine("Non ci sono reparti");
+                numeroReparto = -1;
+            }
+            else
+            {
+                Helper.StampaCollection(reparti);
+                var numMax = reparti.Max(r => r.NumeroReparto);
+                numeroReparto = VerificaInput(numMax);
+            }
+            return numeroReparto;
         }
 
         private static void AggiungiDipendente()
@@ -139,47 +160,30 @@ namespace Week6.SupermercatoEF
             Console.Write("Cognome: ");
             string cognome = Console.ReadLine();
             Console.Write("Data di nascita (dd/mm/yyyy)");
-            bool verifica = DateTime.TryParse(Console.ReadLine(), out DateTime dataNascita);
-            while (!verifica)
-            {
-                Console.WriteLine("Inserisci il formato corretto");
-                verifica = DateTime.TryParse(Console.ReadLine(), out dataNascita);
-            }
+            DateTime dataNascita = VerificaData();
             var reparti = repoReparto.GetAll();
-            if (reparti.Count == 0)
+            Dipendente dipendente = new Dipendente()
             {
-                Console.WriteLine("Nessun reparto disponibile");
-                return;
-            }
-            else
+                Codice = codice,
+                Nome = nome,
+                Cognome = cognome,
+                DataNascita = dataNascita,
+            };
+            int numeroReparto = ScegliNumeroReparto();
+            if(numeroReparto > 0)
             {
-                StampaReparti(reparti);
-                Console.WriteLine("Scegli il numero di reparto");
-                var numeroMax = reparti.Max(r => r.NumeroReparto);
-                int numeroReparto = VerificaInput(numeroMax);
-                Dipendente dipendente = new Dipendente()
-                {
-                    Codice = codice,
-                    Nome = nome,
-                    Cognome = cognome,
-                    DataNascita = dataNascita,
-                };
-                if(repoReparto.AggiungiDipendente(numeroReparto, dipendente))
-                {
-                    Console.WriteLine("Operazione completata");
-                }else
-                {
-                    Console.WriteLine("Operazione non riuscita");
-                }
+                repoReparto.AggiungiDipendente(numeroReparto, dipendente);
             }
         }
 
-        private static void StampaReparti(ICollection<Reparto> reparti)
+        private static DateTime VerificaData()
         {
-            foreach(var reparto in reparti)
+            bool verifica = DateTime.TryParse(Console.ReadLine(), out DateTime dataNascita);
+            while (!verifica)
             {
-                Console.WriteLine(reparto);
+                verifica = DateTime.TryParse(Console.ReadLine(), out dataNascita);
             }
+            return dataNascita;
         }
 
         private static void AggiungiReparto()

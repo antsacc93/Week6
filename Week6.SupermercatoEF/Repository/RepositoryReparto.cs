@@ -16,15 +16,22 @@ namespace Week6.SupermercatoEF.Repository
             bool esito = false;
             using (var ctx = new SupermercatoContext())
             {
-                var reparto = GetByNumero(numero);
-                if(reparto != null)
+                var reparto = ctx.Reparti.Include(x => x.Dipendenti)
+                                         .FirstOrDefault(n => n.NumeroReparto == numero);
+                if (reparto != null)
                 {
-                    //TODO TRY-CATCH
-                    reparto.Dipendenti.Add(dipendente);
-                    dipendente.Reparto = reparto;
-                    ctx.SaveChanges();
-                    esito = true;
-                }   
+                    try
+                    {
+                        reparto.Dipendenti.Add(dipendente);
+                        dipendente.Reparto = reparto;
+                        ctx.SaveChanges();
+                        esito = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return esito;
+                    }
+                }
             }
             return esito;
         }
@@ -34,14 +41,19 @@ namespace Week6.SupermercatoEF.Repository
             bool esito = false;
             using (var ctx = new SupermercatoContext())
             {
-                //TODO Try catch
-                //var reparto = GetByNumero(numero);
-                var reparto = ctx.Reparti.Include(p => p.Prodotti)
-                    .FirstOrDefault(n => n.NumeroReparto == numero);
-                reparto.Prodotti.Add(prodotto);
-                prodotto.Reparto = reparto;
-                ctx.SaveChanges();
-                esito = true;
+                try
+                {
+                    var reparto = ctx.Reparti.Include(p => p.Prodotti)
+                        .FirstOrDefault(n => n.NumeroReparto == numero);
+                    reparto.Prodotti.Add(prodotto);
+                    prodotto.Reparto = reparto;
+                    ctx.SaveChanges();
+                    esito = true;
+                }
+                catch (Exception ec)
+                {
+                    return esito;
+                }
             }
             return esito;
         }
@@ -57,7 +69,8 @@ namespace Week6.SupermercatoEF.Repository
                         ctx.Entry<Reparto>(item).State = EntityState.Added;
                         //ctx.Reparti.Add(item);
                         ctx.SaveChanges();
-                    }catch(Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         return null;
                     }
@@ -72,14 +85,14 @@ namespace Week6.SupermercatoEF.Repository
             bool esito = false;
             using (var ctx = new SupermercatoContext())
             {
-                if(numero > 0)
+                if (numero > 0)
                 {
                     repartoToDelete = ctx.Reparti.Find(numero);
                 }
             }
             using (var ctx = new SupermercatoContext())
             {
-                if(repartoToDelete != null)
+                if (repartoToDelete != null)
                 {
                     try
                     {
@@ -88,7 +101,7 @@ namespace Week6.SupermercatoEF.Repository
                         ctx.SaveChanges();
                         esito = true;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         return esito;
                     }
@@ -124,7 +137,7 @@ namespace Week6.SupermercatoEF.Repository
             Reparto repartoToUpdateDb = null;
             using (var ctx = new SupermercatoContext())
             {
-                if(numero != 0)
+                if (numero != 0)
                 {
                     repartoToUpdateDb = ctx.Reparti.Find(numero);
                 }
@@ -132,7 +145,7 @@ namespace Week6.SupermercatoEF.Repository
 
             using (var ctx = new SupermercatoContext())
             {
-                if(repartoToUpdateDb != null && repartoToUpdate != null)
+                if (repartoToUpdateDb != null && repartoToUpdate != null)
                 {
                     try
                     {
@@ -141,11 +154,11 @@ namespace Week6.SupermercatoEF.Repository
                         //ctx.Reparti.Update(repartoToUpdateDb);
                         ctx.SaveChanges();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         return null;
                     }
-                    
+
                 }
             }
             return repartoToUpdateDb;
