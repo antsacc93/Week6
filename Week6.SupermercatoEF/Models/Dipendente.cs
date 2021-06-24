@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Week6.SupermercatoEF.Models
 {
-    public class Dipendente
+    public class Dipendente : IEntityCode
     {
         public String Codice { get; set; }
         public String Nome { get; set; }

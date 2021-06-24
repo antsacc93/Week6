@@ -12,13 +12,17 @@ namespace Week6.SupermercatoEF
     // Add-Migration "NomeMigration"
     // Update-Database
     //--
-    //CREO IL REPOSITORY 
+    //CREO IL REPOSITORY --  
     //CREO L'INTERFACCIA CON L'UTENTE
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bool continua = true;
+            while (continua)
+            {
+                continua = GestoreSupermercato.SchermoMenu();
+            }
         }
     }
 }
