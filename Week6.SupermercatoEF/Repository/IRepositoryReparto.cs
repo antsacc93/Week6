@@ -13,5 +13,8 @@ namespace Week6.SupermercatoEF.Repository
         public Reparto Update(int numero, Reparto repartoToUpdate);
         public bool Delete(int numero);
 
+        public bool AggiungiDipendente(int numero, Dipendente dipendente);
+        public bool AggiungiProdotto(int numero, Prodotto prodotto);
+
     }
 }

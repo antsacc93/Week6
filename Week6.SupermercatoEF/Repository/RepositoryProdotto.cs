@@ -20,7 +20,7 @@ namespace Week6.SupermercatoEF.Repository
                     try
                     {
                         ctx.Entry<Prodotto>(item).State = EntityState.Added;
-                        ctx.Prodotti.Add(item);
+                        //ctx.Prodotti.Add(item);
                         ctx.SaveChanges();
                     }
                     catch (Exception ex)
@@ -51,7 +51,7 @@ namespace Week6.SupermercatoEF.Repository
                     try
                     {
                         ctx.Entry<Prodotto>(prodottoToDelete).State = EntityState.Deleted;
-                        ctx.Prodotti.Remove(prodottoToDelete);
+                        //ctx.Prodotti.Remove(prodottoToDelete);
                         ctx.SaveChanges();
                         esito = true;
                     }

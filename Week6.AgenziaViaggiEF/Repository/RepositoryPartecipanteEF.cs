@@ -23,7 +23,7 @@ namespace Week6.AgenziaViaggiEF.Repository
                         return false;
                     }
 
-                    //DA RIVEDERE
+                    
                     var partecipanteDB = ctx.Partecipanti.Find(idPartecipante);
                     var gitaDB = ctx.Gite.Find(idGita);
                     partecipanteDB.Gite.Add(gitaDB);
@@ -31,9 +31,7 @@ namespace Week6.AgenziaViaggiEF.Repository
                     ctx.SaveChanges();
                     return true;
 
-                    //ctx.Partecipanti.Attach(partecipante);
-                    //ctx.Gite.Attach(gita);
-                    ctx.SaveChanges();
+                    
                 }catch(SqlException ex)
                 {
                     Console.WriteLine(ex.Message);

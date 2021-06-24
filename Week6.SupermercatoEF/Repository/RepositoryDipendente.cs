@@ -20,7 +20,7 @@ namespace Week6.SupermercatoEF.Repository
                     try
                     {
                         ctx.Entry<Dipendente>(item).State = EntityState.Added;
-                        ctx.Dipendenti.Add(item);
+                        //ctx.Dipendenti.Add(item);
                         ctx.SaveChanges();
                     }
                     catch (Exception)
@@ -51,7 +51,7 @@ namespace Week6.SupermercatoEF.Repository
                     try
                     {
                         ctx.Entry<Dipendente>(dipToDelete).State = EntityState.Deleted;
-                        ctx.Dipendenti.Remove(dipToDelete);
+                        //ctx.Dipendenti.Remove(dipToDelete);
                         ctx.SaveChanges();
                         esito = true;
                     }

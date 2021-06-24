@@ -16,7 +16,7 @@ namespace Week6.SupermercatoEF.Repository
             using(var ctx = new SupermercatoContext())
             {
                 ctx.Entry<Vendita>(item).State = EntityState.Added;
-                ctx.Vendite.Add(item);
+                //ctx.Vendite.Add(item);
                 ctx.SaveChanges();
             }
             return item;
