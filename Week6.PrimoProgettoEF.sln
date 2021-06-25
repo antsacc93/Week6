@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.GestioneAutomobili", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.AgenziaViaggiEF", "Week6.AgenziaViaggiEF\Week6.AgenziaViaggiEF.csproj", "{5CB8D642-BB21-4625-8AC5-4D7441A764AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6.SupermercatoEF", "Week6.SupermercatoEF\Week6.SupermercatoEF.csproj", "{6A2C74E7-8255-4C7D-8513-2C28DC25728D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week6.SupermercatoEF", "Week6.SupermercatoEF\Week6.SupermercatoEF.csproj", "{6A2C74E7-8255-4C7D-8513-2C28DC25728D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6.EsercitazioneFinale", "Week6.EsercitazioneFinale\Week6.EsercitazioneFinale.csproj", "{FE1C8FF3-0973-4546-9521-5643F6ED9382}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6A2C74E7-8255-4C7D-8513-2C28DC25728D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A2C74E7-8255-4C7D-8513-2C28DC25728D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A2C74E7-8255-4C7D-8513-2C28DC25728D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE1C8FF3-0973-4546-9521-5643F6ED9382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE1C8FF3-0973-4546-9521-5643F6ED9382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE1C8FF3-0973-4546-9521-5643F6ED9382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE1C8FF3-0973-4546-9521-5643F6ED9382}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
